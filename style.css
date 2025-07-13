@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0; padding: 0;
+}
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(ellipse at center, #3d3c3c, #000000);
+  color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+.camera-container {
+  position: relative;
+  border: 4px solid #000000;
+  box-shadow: 0 0 25px #ffffff, 0 0 1000px #ffffff inset;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 1024px;
+  height: 576px;
+  margin-bottom: 20px;
+  z-index: 5;
+}
+video {
+  width: 1024px;
+  height: 576px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* чтобы не было видно, но кадры идут */
+  pointer-events: none; /* чтобы не мешал */
+}
+
+canvas {
+  position: absolute;
+  left: 0; top: 0;
+  width: 1024px;
+  height: 576px;
+  z-index: 10;
+}
+audio {
+  position: relative;
+  z-index: 15;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+  width: 300px;
+  outline: none;
+}
+#audioMixer {
+  width: 300px;
+  font-family: 'Orbitron', sans-serif;
+  color: #97d3d1;
+  user-select: none;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.audioBar {
+  background: #222;
+  border-radius: 10px;
+  margin: 6px 0;
+  height: 12px;
+  width: 100%;
+}
+.audioBarFill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.2s ease;
+}
+#modeButtons {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+#modeButtons button {
+  background: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  color: rgb(82, 96, 218);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#modeButtons button.active {
+  background: #000000;
+  color: white;
+}
+
+#volumeBar {
+  background: #cfa7cf;
+  width: 50%;
+}
+#rateBar {
+  background: #bff0f0;
+  width: 50%;
+}
+.statusText {
+  margin-top: 15px;
+  font-weight: 700;
+  color: rgb(116, 134, 116);
+}
+#playStatus.paused {
+  color: rgb(167, 111, 111);
+}
+#hearts {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: visible;
+  z-index: 30;
+}
+.heart {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  animation: floatUp 1.9s linear forwards;
+  filter: drop-shadow(0 0 10px #ffffff);
+  opacity: 0.9;
+}
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) scale(1.5);
+    opacity: 0;
+  }
+} 
